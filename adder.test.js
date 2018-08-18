@@ -1,11 +1,22 @@
-const tester = (actual, expected, name) => {
-    if (actual === expected) {
-        console.log("Pass");
-        return true;
-    } else {
-        console.log(`Fail: ${name}. Expected ${expected}, gotten ${actual}`);
-        return false;
-    }
+const tester = {
+    equals: (actual, expected, name) => {
+        if (actual === expected) {
+            console.log("Pass");
+            return true;
+        } else {
+            console.log(`Fail: ${name}. Expected ${expected}, gotten ${actual}`);
+            return false;
+        }
+    },
+    approximate: (actual, expected, epsilon, name) => {
+        if (Math.abs(actual - expected) < epsilon) {
+            console.log("Pass");
+            return true;
+        } else {
+            console.log(`Fail: ${name}. Expected ${expected}, gotten ${actual}`);
+            return false;
+        }
+    },
 }
 
 const test1 = ((name) => {
@@ -18,7 +29,7 @@ const test1 = ((name) => {
     const actual = add(first, second);
 
     // 3. Assert
-    tester(actual, expected, name);
+    tester.equals(actual, expected, name);
 })("Expect adder to return first argument if second argument is zero");
 
 const test2 = ((name) => {
@@ -31,7 +42,7 @@ const test2 = ((name) => {
     const actual = add(first, second);
 
     // 3. Assert
-    tester(actual, expected, name);
+    tester.equals(actual, expected, name);
 })("Expect adder to double same argument");
 
 const test_arrays = ((name) => {
@@ -44,7 +55,7 @@ const test_arrays = ((name) => {
     const actual = add(first, second);
 
     // 3. Assert
-    tester(actual, expected, name);
+    tester.equals(actual, expected, name);
 })("If both arguments are arrays expect to return null");
 
 const test_objects = ((name) => {
@@ -57,7 +68,7 @@ const test_objects = ((name) => {
     const actual = add(first, second);
 
     // 3. Assert
-    tester(actual, expected, name);
+    tester.equals(actual, expected, name);
 })("If both arguments are objects expect to return null");
 
 const test_second_array = ((name) => {
@@ -70,5 +81,18 @@ const test_second_array = ((name) => {
     const actual = add(first, second);
 
     // 3. Assert
-    tester(actual, expected, name);
+    tester.equals(actual, expected, name);
 })("If second argument is array expect to return null");
+
+const test_decimal = ((name) => {
+    // 1. Arrange
+    const first = 0.1;
+    const second = 0.2;
+    const expected = 0.3;
+
+    // 2. Act
+    const actual = add(first, second);
+
+    // 3. Assert
+    tester.approximate(actual, expected, 0.0005, name);
+})("Expect decimal addition to work");

@@ -7,7 +7,23 @@
     <title>Test Document</title>
 </head>
 <body>
-    <script src="adder.js"></script>
-    <script src="adder.test.js"></script>
+    <!-- <script src="adder.js"></script>
+    <script src="adder.test.js"></script> -->
+    <input type="number" id="input" />
+    <button id="convert">Convert</button>
+    <div id="result"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=>{
+            document.getElementById("convert").addEventListener("click",()=>{
+                const value = document.getElementById("input").valueAsNumber;
+                const result = numberToWords(value);
+                document.getElementById("result").innerHTML = result;
+            });
+        })
+    </script>
+
+    <script src="number-to-words.js"></script>
+    <script src="number-to-words.test.js"></script>
 </body>
 </html>
