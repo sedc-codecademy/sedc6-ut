@@ -9,13 +9,24 @@ const itemShipping = 3;
 // if more than 3 items are shipped, shipping is regular and tax is reduced 10%
 // else shipping is increased 25%
 
+// if parameter is invalid return zeroes
+
 function calculateDiscount (order) {
+
+    if (!(order && order.items)){
+        return {
+            total: 0,
+            tax: 0,
+            shipping: 0
+        }
+    }
+
     let sum = 0;
     let tax = 0;
     let shipping = 0;
     for (let index = 0; index < order.items.length; index++) {
         const orderItem = order.items[index];
-        sum += orderItem.price * orderItem.quantity;
+        sum = orderItem.price * orderItem.quantity;
         tax += orderItem.price * orderItem.quantity * flatRate;
 
         if (orderItem.category === "Food") {
