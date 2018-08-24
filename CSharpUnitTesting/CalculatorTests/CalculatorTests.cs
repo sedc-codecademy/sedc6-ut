@@ -74,21 +74,22 @@ namespace CalculatorTests
             // 1. Arrange
             var first = 10;
             var second = 10;
-            var expected = 0;
-            // 2. Act
-            try
-            {
-                var actual = calculator.Calculate(first, second, ".");
-                Assert.Fail("should not come here");
-            }
-            catch (ArgumentException ae)
-            {
-                Assert.IsTrue(true);
-            }
 
             // 3. Assert
-            //Assert.AreEqual(expected, actual);
-            //Assert.ThrowsException
+            Assert.ThrowsException<ArgumentException>(() => calculator.Calculate(first, second, "."));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Using_invalid_operation_throws_exception_2()
+        {
+            // 1. Arrange
+            var first = 10;
+            var second = 10;
+
+
+            // 2. Act
+            calculator.Calculate(first, second, ".");
         }
 
     }
