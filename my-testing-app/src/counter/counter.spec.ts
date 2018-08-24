@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { CounterComponent } from './counter';
 import { CountingService } from '../services/counting-service';
 describe('CounterComponent', () => {
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -12,6 +13,11 @@ describe('CounterComponent', () => {
       ]
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    countingServiceMock.decrement.calls.reset();
+    countingServiceMock.increment.calls.reset();
+  });
 
   // class CountingServiceMock {
   //   async increment(value) {
