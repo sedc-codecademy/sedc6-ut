@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="BetterComplicatedCalculator.cs" />
+    <Compile Include="ComplicatedCalculator.cs" />
+    <Compile Include="DateUtils.cs" />
+    <Compile Include="DbCalculatorEngine.cs" />
+    <Compile Include="ICalculatorEngine.cs" />
     <Compile Include="NumberConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
