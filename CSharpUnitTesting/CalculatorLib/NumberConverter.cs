@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalculatorLib
 {
-    class NumberConverter
+    public class NumberConverter
     {
-        public string ToWords()
+        public string ToWords(int input)
         {
             return string.Empty;
         }
